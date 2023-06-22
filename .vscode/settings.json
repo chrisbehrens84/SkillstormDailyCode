@@ -1,0 +1,12 @@
+{
+  "java.configuration.updateBuildConfiguration": "automatic",
+  "maven.executable.preferMavenWrapper": true,
+  "maven.excludedFolders": [
+    
+    "**/.*",
+    "**/node_modules",
+    "**/target",
+    "**/bin",
+    "**/archetype-resources"
+  ]
+}

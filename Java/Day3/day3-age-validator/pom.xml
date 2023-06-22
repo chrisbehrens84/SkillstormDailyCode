@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!--
+    POM - Project Object Model
+      - represents your entire project for maven
+      - Maven uses the info in pom to decide how to build your project
+
+  -->
+
+
+ <!-- 
+
+    BUILD LIFECYCLE
+
+    1. validate 
+        ensure that your project has all the necessary components
+          ex: validate will fail if your project coordinates are missing
+
+    2. compile
+        compile your source code
+          fails if code has errors
+
+    3. test
+        runs all of your unit tests
+          fails if tests don't pass
+    
+    4. package 
+        packages compiled code into JAR or WAR - depending what you specify
+
+    5. verify
+        runs all of your integration tests
+          all of the pieces working together
+
+    6. install
+        install the created package to your local repository (.m2)
+          once installed, it can be used in other maven projects
+
+    7. deploy
+        puts created package on maven central
+  --> 
+  <!--Project Cordinates-->
+  <groupId>com.skillstorm</groupId> <!--Project Domain, usually a business name of some kind-->
+  <artifactId>day3-age-validator</artifactId> <!--project name - no caps or spaces-->
+  <version>1.0.0</version> <!--major.minor.patch-->
+
+  <name>Day3 Age Validator</name> <!-- your actual project name: optional-->
+  <description>Validates peoples ages</description> <!--Description of your project: optional-->
+
+  <!--
+    Basically variables you can use throughout your pom maven will also use some of these
+  -->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source> <!--Change Java version to 1.8-->
+    <maven.compiler.target>1.8</maven.compiler.target> <!--Change Java version to 1.8-->
+  </properties>
+
+  <!--DEPENDENCY MANAGEMENT
+    dependiencies third  party libaries that your project is using
+    external repository with all dependencies in the world  - Maven Central Repositry
+    .m2 folder is your local copy of maven central
+
+    when maven builds your project, it checks for dependencies
+      it will first search in .m2 for those
+      if it can't find in.m2, it downloads form maven central
+  
+  -->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+        <plugin>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.7.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>3.0.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
